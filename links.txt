@@ -1,0 +1,2 @@
+https://github.com/django/channels/issues/1722 - Django/ASGIRef bug
+https://stackoverflow.com/questions/68208931/django-runtimeerror-at-admin-users-user-1-change-single-thread-executor-alrea - SO solution

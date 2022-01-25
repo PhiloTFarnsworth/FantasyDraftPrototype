@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="EN">
+    <head>
+        <title>FantasyDraft</title>
+
+        <!--Bootstrap-->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+        rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+        crossorigin="anonymous">
+    </head>
+
+    <body>
+        <div id='root'></div>
+        {{ teams | json_script:'teams'}}
+        {{ username | json_script:'username-data'}}
+        {{ managers | json_script:'managers'}}
+        {{ activeDrafts | json_script:'activeDrafts'}}
+        {{ completedDrafts | json_script:'completedDrafts'}}
+        {% if messages %}
+            {% for message in messages %}
+                {{ message.message | json_script:'error' }} 
+            {% endfor %}
+        {% endif %}
+        <link href="{% static 'draft/app.css' %}" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+        
+        <!--React-->
+        <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin='anonymous'></script>  
+        <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin='anonymous'></script>
+        <script src="https://unpkg.com/babel-standalone@6/babel.min.js" crossorigin='anonymous'></script>
+        <!--FantasyDraft-->
+        <script type='text/babel' src="{% static 'draft/util.js' %}"></script>
+        <script type='text/babel' src="{% static 'draft/logincontrol.js' %}"></script>
+        <script type='text/babel' src="{% static 'draft/draftpool.js' %}"></script>
+        <script type='text/babel' src="{% static 'draft/draftorder.js' %}"></script>
+        <script type='text/babel' src="{% static 'draft/draftboard.js' %}"></script>
+        <script type='text/babel' src="{% static 'draft/draft.js' %}"></script>
+        <script type='text/babel' src="{% static 'draft/lobby.js' %}"></script>
+        <!--Bootstrap-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" 
+        integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    </body>
+</html>
